@@ -1,27 +1,16 @@
-'use client';
-import { useEffect, useState } from 'react';
-
-
-type Dash = { revenueMonth: number; cogsMonth: number };
-
-
-export default function Dashboard() {
-const [data, setData] = useState<Dash | null>(null);
-useEffect(() => { fetch('/api/reports/dashboard').then(r=>r.json()).then(res=>setData(res.data)); }, []);
-return (
-<div className="grid gap-4 md:grid-cols-3">
-<div className="rounded-2xl border bg-white p-6">
-<div className="text-sm text-neutral-500">Revenue (Month)</div>
-<div className="mt-2 text-3xl font-semibold">{data ? data.revenueMonth.toFixed(2) : '…'}</div>
-</div>
-<div className="rounded-2xl border bg-white p-6">
-<div className="text-sm text-neutral-500">COGS (Month)</div>
-<div className="mt-2 text-3xl font-semibold">{data ? data.cogsMonth.toFixed(2) : '…'}</div>
-</div>
-<div className="rounded-2xl border bg-white p-6">
-<div className="text-sm text-neutral-500">Gross Profit</div>
-<div className="mt-2 text-3xl font-semibold">{data ? (data.revenueMonth - data.cogsMonth).toFixed(2) : '…'}</div>
-</div>
-</div>
-);
+export default function Home() {
+  return (
+    <main className="flex min-h-screen flex-col items-center justify-center p-6">
+      <h1 className="text-4xl font-bold sm:text-5xl">Welcome</h1>
+      <p className="mt-4 max-w-2xl text-center text-lg text-gray-600 dark:text-gray-400">
+        Build your application with a modern, minimalistic and responsive design using Tailwind CSS.
+      </p>
+      <a
+        href="#get-started"
+        className="mt-8 rounded-md bg-gray-900 px-6 py-3 text-white transition-colors hover:bg-gray-700 dark:bg-gray-50 dark:text-gray-900 dark:hover:bg-gray-200"
+      >
+        Get Started
+      </a>
+    </main>
+  );
 }
